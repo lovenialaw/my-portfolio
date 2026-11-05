@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lovenia's personal portfolio.">
+  <title>Lovenia | Personal Portfolio</title>
+  <style>
+    /* Change the colours here to personalise the look of your portfolio. */
+    :root {
+      --background: #f7f7f3;
+      --surface: #ffffff;
+      --text: #252820;
+      --muted: #6e7469;
+      --accent: #55745d;
+      --accent-light: #e8eee7;
+      --border: #e5e8e0;
+      --radius: 18px;
+      --max-width: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    main { padding-bottom: 64px; }
+
+    .hero {
+      padding: clamp(64px, 12vw, 116px) 0 76px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-size: clamp(3rem, 9vw, 6.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-intro {
+      max-width: 570px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 19px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.93rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #405d48;
+    }
+
+    section { padding: 48px 0; }
+
+    .section-heading {
+      margin-bottom: 22px;
+      font-size: clamp(1.7rem, 4vw, 2.25rem);
+      letter-spacing: -0.045em;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 30px;
+      align-items: start;
+      padding: clamp(24px, 5vw, 38px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .about-panel p {
+      max-width: 580px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .interest {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: #405d48;
+      font-size: 0.88rem;
+      font-weight: 650;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .work-card {
+      min-height: 220px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(37, 40, 32, 0.07);
+    }
+
+    .card-number {
+      display: inline-block;
+      margin-bottom: 32px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+    }
+
+    .work-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      letter-spacing: -0.025em;
+    }
+
+    .work-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: clamp(25px, 5vw, 40px);
+      border-radius: var(--radius);
+      background: #e8eee7;
+    }
+
+    .contact-panel p {
+      max-width: 500px;
+      margin-bottom: 0;
+      color: #59665a;
+    }
+
+    .contact-panel .button {
+      flex-shrink: 0;
+      border-color: var(--text);
+      background: var(--text);
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links { gap: 16px; }
+
+      .about-panel { grid-template-columns: 1fr; }
+
+      .work-grid { grid-template-columns: 1fr; }
+
+      .work-card { min-height: auto; }
+
+      .card-number { margin-bottom: 20px; }
+
+      .contact-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER: Change "Lovenia" here if you want a different name in the navigation. -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home">lovenia.</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: Edit the greeting and short introduction below. -->
+    <div class="container hero" id="home">
+      <p class="eyebrow">Personal portfolio</p>
+      <h1>Hi, I'm Lovenia.</h1>
+      <p class="hero-intro">A little space on the internet to share what I enjoy, what I'm exploring, and the things I create.</p>
+      <a class="button" href="#work">Explore my page</a>
+    </div>
+
+    <!-- ABOUT: Replace "hi there" with a longer introduction whenever you like. -->
+    <section class="container" id="about">
+      <p class="eyebrow">A bit about me</p>
+      <div class="about-panel">
+        <div>
+          <h2 class="section-heading">About</h2>
+          <div class="interest-list" aria-label="Things I enjoy">
+            <span class="interest">Good food</span>
+            <span class="interest">Rest</span>
+            <span class="interest">Sports</span>
+          </div>
+        </div>
+        <p>hi there! I like to eat, rest and play sports. This is my little corner to share my interests and anything else I feel like putting out into the world.</p>
+      </div>
+    </section>
+
+    <!-- WORK: Edit the title and description in each of these three cards.
+         You can rename "Work" to "Things I Like" if that fits your content better. -->
+    <section class="container" id="work">
+      <p class="eyebrow">A few highlights</p>
+      <h2 class="section-heading">Work &amp; interests</h2>
+      <div class="work-grid">
+        <article class="work-card">
+          <span class="card-number">01 / FOOD</span>
+          <h3>Food adventures</h3>
+          <p>Trying good food, discovering new places, and enjoying favourite meals.</p>
+        </article>
+
+        <article class="work-card">
+          <span class="card-number">02 / REST</span>
+          <h3>Slow moments</h3>
+          <p>Making time to recharge, relax, and enjoy a slower day.</p>
+        </article>
+
+        <article class="work-card">
+          <span class="card-number">03 / SPORTS</span>
+          <h3>Staying active</h3>
+          <p>Enjoying sports, having fun, and keeping movement part of life.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT: Replace the email address with your own before publishing.
+         You can also change the sentence to include a social media or portfolio link. -->
+    <section class="container" id="contact">
+      <div class="contact-panel">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-heading">Say hello.</h2>
+          <p>Have something you'd like to share? I'd be happy to hear from you.</p>
+        </div>
+        <a class="button" href="mailto:hello@example.com">Email me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: You can update the year or add a social link here. -->
+  <footer>
+    <div class="container">© 2026 Lovenia. Made with care.</div>
+  </footer>
+</body>
+</html>
